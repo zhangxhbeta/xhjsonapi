@@ -19,18 +19,19 @@ export default class XHJsonApi extends Frisbee{
       throw new Error('需要提供方法定义列表（methods）');
     }
 
-    this.opts.methods.forEach(function(namespace) {
-      this[namespace.name] = namespace.methods.reduce(function(result, method) {
+    this.opts.methods.forEach((namespace) => {
+      this[namespace.name] = namespace.methods.reduce((result, method) => {
         // 依次设置方法函数
-        result[method] = function(params, callback) {
-          const options = {
+        result[method] = (params, callback) => {
+          const payload = {
             jsonrpc: '2.0',
             method: namespace.name + '.' + method,
-            id: id,
+            id: 1,
             params: params,
           };
-          return this.post(this.opts.rpcPath, options, callback)
-            .then(function(response, body) {
+
+          return this.post(this.opts.rpcPath, {credentials: 'include', body: JSON.stringify(payload)}, callback)
+            .then((response, body) => {
               // 这里接收到 body 和 原始的 response
               if (typeof body === 'object') {
                 const result = body.result;
