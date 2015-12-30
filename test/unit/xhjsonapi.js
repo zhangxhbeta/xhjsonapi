@@ -2,7 +2,6 @@ import XHJsonApi from '../../src/xhjsonapi';
 
 const baseURI = 'http://localhost:8080/app';
 const rpcPath = '/api';
-const expect = chai.expect;
 
 describe('XHJsonApi', () => {
 
