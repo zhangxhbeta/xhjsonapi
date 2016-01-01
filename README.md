@@ -2,7 +2,7 @@
 
 a jsonrpc client for node/browser/react native
 
-超轻量级的 json-rpc 2.0 协议实现，基于新的标准 [fetch](https://fetch.spec.whatwg.org/) api 来实现，另外为了方便使用集成了另外一个库 [frisbee](https://github.com/niftylettuce/frisbee)，实现了[常见的 http 操作](# REST 接口)
+超轻量级的 json-rpc 2.0 协议实现，基于新的标准 [fetch](https://fetch.spec.whatwg.org/) api 来实现，另外为了方便使用集成了另外一个库 [frisbee](https://github.com/niftylettuce/frisbee)，实现了[常见的 http 操作](#rest-接口)
 
 [![Travis build status](http://img.shields.io/travis/zhangxhbeta/xhjsonapi.svg?style=flat)](https://travis-ci.org/zhangxhbeta/xhjsonapi)
 [![Code Climate](https://codeclimate.com/github/zhangxhbeta/xhjsonapi/badges/gpa.svg)](https://codeclimate.com/github/zhangxhbeta/xhjsonapi)
