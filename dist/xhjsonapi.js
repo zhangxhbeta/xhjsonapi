@@ -35,7 +35,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
       this.opts.methods.forEach(function (namespace) {
         _this[namespace.name] = namespace.methods.reduce(function (result, method) {
           // 依次设置方法函数
-          result[method] = function (params, callback) {
+          result[method] = function () {
+            for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+              params[_key] = arguments[_key];
+            }
+
             var payload = {
               jsonrpc: '2.0',
               method: namespace.name + '.' + method,
@@ -43,7 +47,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
               params: params
             };
 
-            return _this.post(_this.opts.rpcPath, { credentials: 'include', body: JSON.stringify(payload) }, callback).then(function (response, body) {
+            return _this.post(_this.opts.rpcPath, { credentials: 'include', body: JSON.stringify(payload) }).then(function (response, body) {
               // 这里接收到 body 和 原始的 response
               if (typeof body === 'object') {
                 var _result = body.result;

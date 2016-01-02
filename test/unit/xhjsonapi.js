@@ -35,7 +35,7 @@ describe('XHJsonApi', () => {
       expect(api.post.calledWithMatch(rpcPath,
         {
           credentials: 'include',
-          body: '{"jsonrpc":"2.0","method":"foo.bar","id":1,"params":"foo"}',
+          body: '{"jsonrpc":"2.0","method":"foo.bar","id":1,"params":["foo"]}',
         }
       ), '调用参数和预期一致').to.be.ok;
     });

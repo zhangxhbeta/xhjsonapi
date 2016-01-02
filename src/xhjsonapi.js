@@ -22,7 +22,7 @@ export default class XHJsonApi extends Frisbee{
     this.opts.methods.forEach((namespace) => {
       this[namespace.name] = namespace.methods.reduce((result, method) => {
         // 依次设置方法函数
-        result[method] = (params, callback) => {
+        result[method] = (...params) => {
           const payload = {
             jsonrpc: '2.0',
             method: namespace.name + '.' + method,
@@ -30,7 +30,7 @@ export default class XHJsonApi extends Frisbee{
             params: params,
           };
 
-          return this.post(this.opts.rpcPath, {credentials: 'include', body: JSON.stringify(payload)}, callback)
+          return this.post(this.opts.rpcPath, {credentials: 'include', body: JSON.stringify(payload)})
             .then((response, body) => {
               // 这里接收到 body 和 原始的 response
               if (typeof body === 'object') {
