@@ -125,7 +125,7 @@ methods 是一个服务端暴漏的方法列表，提供这个列表后会将这
   }.catch(e) {
     console.log(e);
   }
-```
+  ```
 
 ## REST 接口
 
