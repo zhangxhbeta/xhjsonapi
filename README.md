@@ -54,10 +54,16 @@ a jsonrpc client for node/browser/react native
 ### 传统浏览器环境
 
 1. 下载必要的脚本
+
 	[es6-promise](https://raw.githubusercontent.com/jakearchibald/es6-promise/master/dist/es6-promise.min.js)
+
 	[fetch](https://raw.githubusercontent.com/github/fetch/master/fetch.js)
 
-	**要支持ie8的话，要用下面2个**，请使用 [es5-shim](https://raw.githubusercontent.com/es-shims/es5-shim/master/es5-shim.min.js) + [fetch-ie8](https://raw.githubusercontent.com/camsong/fetch-ie8/master/fetch.js)
+	[frisbee](https://raw.githubusercontent.com/zhangxhbeta/frisbee/master/lib/frisbee.js)
+
+	[xhjsonapi](https://raw.githubusercontent.com/zhangxhbeta/xhjsonapi/master/dist/xhjsonapi.min.js)
+
+	**如果要支持ie8的话，请将 fetch 换成** [es5-shim](https://raw.githubusercontent.com/es-shims/es5-shim/master/es5-shim.min.js) + [fetch-ie8](https://raw.githubusercontent.com/camsong/fetch-ie8/master/fetch.js)
 2. 引入js脚本
 
 	```html
@@ -80,7 +86,9 @@ a jsonrpc client for node/browser/react native
       <!-- 引入 fetch 库 -->
       <script src="scripts/fetch.js"></script>
       <!-- 引入 frisbee -->
-      <script src='scripts/frisbee.js'></script>
+      <script src="scripts/frisbee.js"></script>
+      <!-- 引入 xhjsonapi -->
+      <script src="scripts/xhjsonapi.js"></script>
     </head>
     <body>
     </body>
