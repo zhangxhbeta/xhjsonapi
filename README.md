@@ -120,11 +120,11 @@ methods 是一个服务端暴漏的方法列表，提供这个列表后会将这
   }
 
 	// 如果需要传参数
-	api.otherModule.foo('the', 'best', 1).then(result) {
-		console.log(result);
-	}.catch(e) {
-		console.log(e);
-	}
+  api.otherModule.foo('the', 'best', 1).then(result) {
+    console.log(result);
+  }.catch(e) {
+    console.log(e);
+  }
 ```
 
 ## REST 接口
