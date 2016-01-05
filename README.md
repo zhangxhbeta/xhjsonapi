@@ -24,7 +24,7 @@ a jsonrpc client for node/browser/react native
 	```bash
   import XHJsonApi from 'xhjsonapi';
 	```
-3. 查看例子开始使用
+3. [查看例子](#使用例子)开始使用
 
 
 ### 如果想在 Node.js 环境执行
@@ -48,7 +48,7 @@ a jsonrpc client for node/browser/react native
 
   import XHJsonApi from 'xhjsonapi';
 	```
-3. 查看例子开始使用
+3. [查看例子](#使用例子)开始使用
 
 
 ### 传统浏览器环境
@@ -94,6 +94,7 @@ a jsonrpc client for node/browser/react native
     </body>
   </html>
 	```
+3. 接着看[例子](#使用例子)
 
 ### 使用例子
 
