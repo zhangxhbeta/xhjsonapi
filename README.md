@@ -107,7 +107,7 @@ methods 是一个服务端暴漏的方法列表，提供这个列表后会将这
     methods: [
       {
         name: 'news',
-				remoteName: 'newsInterface',
+        remoteName: 'newsInterface',
         methods: ['getHotNews', 'getLatestNews']
       },
       {
