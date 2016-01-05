@@ -112,7 +112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	          var payload = {
 	            jsonrpc: '2.0',
-	            method: namespace.name + '.' + method,
+	            method: (namespace.remoteName || namespace.name) + '.' + method,
 	            id: 1,
 	            params: params
 	          };

@@ -33,7 +33,7 @@ export default class XHJsonApi extends Frisbee{
         result[method] = (...params) => {
           const payload = {
             jsonrpc: '2.0',
-            method: namespace.name + '.' + method,
+            method: `${namespace.remoteName || namespace.name}.${method}`,
             id: 1,
             params: params,
           };
