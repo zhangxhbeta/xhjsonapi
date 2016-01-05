@@ -122,7 +122,7 @@ methods 是一个服务端暴漏的方法列表，提供这个列表后会将这
   });
 
   // 在需要用的地方调用 api
-	// 将发送报文 {"jsonrpc":"2.0","method":"newsInterface.getHotNews","id":1,"params":[]}
+  // 将发送报文 {"jsonrpc":"2.0","method":"newsInterface.getHotNews","id":1,"params":[]}
   api.news.getHotNews().then(result) {
     console.log(result);
   }.catch(e) {
@@ -130,7 +130,7 @@ methods 是一个服务端暴漏的方法列表，提供这个列表后会将这
   }
 
   // 如果需要传参数可以这样
-	// 将发送报文 {"jsonrpc":"2.0","method":"otherModule.foo","id":1,"params":["the","best",1]}
+  // 将发送报文 {"jsonrpc":"2.0","method":"otherModule.foo","id":1,"params":["the","best",1]}
   api.otherModule.foo('the', 'best', 1).then(result) {
     console.log(result);
   }.catch(e) {
