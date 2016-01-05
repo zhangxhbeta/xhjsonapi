@@ -6,6 +6,14 @@
 
 import Frisbee from 'frisbee';
 
+// 自定义的rpc错误对象
+function RPCError(code, message) {
+  this.name = 'RPCError';
+  this.message = (message || '');
+  this.code = (code || -32603);
+}
+RPCError.prototype = new Error;
+
 export default class XHJsonApi extends Frisbee{
 
   constructor(opts) {
@@ -31,25 +39,25 @@ export default class XHJsonApi extends Frisbee{
           };
 
           return this.post(this.opts.rpcPath, {credentials: 'include', body: JSON.stringify(payload)})
-            .then((response, body) => {
+            .then(({response, body}) => {
               // 这里接收到 body 和 原始的 response
               if (typeof body === 'object') {
                 const result = body.result;
                 const error = body.error;
-                if (!result) {
+                if (result !== undefined) {
                   // 成功返回结果
-                  return {result, body};
-                } else if (!error) {
+                  return result;
+                } else if (error !== undefined) {
                   if (typeof error === 'object' && error.code && error.message) {
-                    throw new Error({code: error.code, message: error.message});
+                    throw new RPCError(error.code, error.message);
                   } else {
-                    throw new Error({code: -32700, message: '无法解析响应的错误信息'});
+                    throw new RPCError(-32700, '无法解析响应的错误信息');
                   }
                 } else {
-                  throw new Error({code: -32700, message: '无法解析响应'});
+                  throw new RPCError(-32700, '无法解析响应');
                 }
               } else {
-                throw new Error({code: -32700, message: '无法解析响应'});
+                throw new RPCError(-32700, '无法解析响应');
               }
             });
         };

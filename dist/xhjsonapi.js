@@ -78,6 +78,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @author zhangxhbeta
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
+	// 自定义的rpc错误对象
+	function RPCError(code, message) {
+	  this.name = 'RPCError';
+	  this.message = message || '';
+	  this.code = code || -32603;
+	}
+	RPCError.prototype = new Error();
+	
 	var XHJsonApi = (function (_Frisbee) {
 	  _inherits(XHJsonApi, _Frisbee);
 	
@@ -109,25 +117,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	            params: params
 	          };
 	
-	          return _this.post(_this.opts.rpcPath, { credentials: 'include', body: JSON.stringify(payload) }).then(function (response, body) {
+	          return _this.post(_this.opts.rpcPath, { credentials: 'include', body: JSON.stringify(payload) }).then(function (_ref) {
+	            var response = _ref.response;
+	            var body = _ref.body;
+	
 	            // 这里接收到 body 和 原始的 response
 	            if ((typeof body === 'undefined' ? 'undefined' : _typeof(body)) === 'object') {
 	              var _result = body.result;
 	              var error = body.error;
-	              if (!_result) {
+	              if (_result !== undefined) {
 	                // 成功返回结果
-	                return { result: _result, body: body };
-	              } else if (!error) {
+	                return _result;
+	              } else if (error !== undefined) {
 	                if ((typeof error === 'undefined' ? 'undefined' : _typeof(error)) === 'object' && error.code && error.message) {
-	                  throw new Error({ code: error.code, message: error.message });
+	                  throw new RPCError(error.code, error.message);
 	                } else {
-	                  throw new Error({ code: -32700, message: '无法解析响应的错误信息' });
+	                  throw new RPCError(-32700, '无法解析响应的错误信息');
 	                }
 	              } else {
-	                throw new Error({ code: -32700, message: '无法解析响应' });
+	                throw new RPCError(-32700, '无法解析响应');
 	              }
 	            } else {
-	              throw new Error({ code: -32700, message: '无法解析响应' });
+	              throw new RPCError(-32700, '无法解析响应');
 	            }
 	          });
 	        };
