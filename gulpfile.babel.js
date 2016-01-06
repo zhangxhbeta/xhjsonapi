@@ -70,7 +70,8 @@ function build() {
           { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
         ]
       },
-      devtool: 'source-map'
+      devtool: 'source-map',
+      externals: 'frisbee',
     }))
     .pipe(gulp.dest(destinationFolder))
     .pipe($.filter(['*', '!**/*.js.map']))

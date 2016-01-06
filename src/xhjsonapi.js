@@ -3,6 +3,7 @@
 
 @author zhangxhbeta
 */
+'use strict';
 
 import Frisbee from 'frisbee';
 
